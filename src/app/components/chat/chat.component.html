@@ -1,10 +1,15 @@
-<h1>Chat</h1>
-<hr>
-<div class="app-mensajes" id="app-mensajes">
+<h1 class="navbar-brand"> <i class="fas fa-comments"></i> Chat</h1>
+<hr class="bg-success">
+<div class="app-mensajes px-3" id="app-mensajes">
     <div *ngFor="let chat of cs.chats" [ngClass]="{ 'text-right': cs.usuario.uid == chat.uid }">
-        <span class="badge" [ngClass]="{ 'badge-primary': cs.usuario.uid == chat.uid, 'badge-success': cs.usuario.uid != chat.uid }">Erick</span>
-        <p>{{ chat.mensaje }}</p>
+        <div class="badge mb-1" [ngClass]="{ 'badge-info': cs.usuario.uid == chat.uid, 'badge-success': cs.usuario.uid != chat.uid }">
+            <span>{{ chat.nombre }}</span>
+            <p class="text-wrap mt-2 mb-2" [ngClass]="{ 'text-justify': cs.usuario.uid == chat.uid, 'text-left': cs.usuario.uid != chat.uid }">{{ chat.mensaje }}</p>
+        </div>
     </div>
 </div>
-<input class="form-control" type="text" name="mensaje" [(ngModel)]="mensaje" (keyup.enter)="enviarMensaje()"
-    placeholder="Enviar mensaje">
+<div class="input-group mt-3">
+    <input class="form-control mx-1" type="text" name="mensaje" [(ngModel)]="mensaje" (keyup.enter)="enviarMensaje()"
+    placeholder="Enviar mensaje"/>
+    <button class="btn btn-info mx-1" (click)="enviarMensaje()"><i class="fas fa-paper-plane"></i></button>
+</div>

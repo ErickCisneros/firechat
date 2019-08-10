@@ -16,7 +16,7 @@ export class ChatService {
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
-      console.log('Estado del usuario: ', user);
+      //console.log('Estado del usuario: ', user);
       if(!user) {
         return;
       }
@@ -41,7 +41,7 @@ export class ChatService {
   cargarMensajes() {
     this.itemsCollection = this.afs.collection<Mensaje>('chats', ref => ref.orderBy('fecha', 'desc').limit(10));
     return this.itemsCollection.valueChanges().pipe(map((mensajes: Mensaje[]) => {
-      console.log(mensajes);
+      //console.log(mensajes);
       this.chats = [];
       for(let mensaje of mensajes) {
         this.chats.unshift(mensaje);

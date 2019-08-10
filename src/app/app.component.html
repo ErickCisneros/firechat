@@ -1,15 +1,25 @@
-<div class="container main-container">
-  <h1>Firechat</h1>
-  <div class="col-md-12 text-right" *ngIf="cs.usuario.uid">
-    <button type="button" class="btn btn-danger" (click)="cs.logout()">
-      Salir
+<div class="navbar navbar-expand-lg navbar-dark text-white">
+  <div class="container">
+    <h1 class="navbar-brand"><i class="fas fa-fire"></i> Firechat</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse text-white" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+        </li>
+        <li class="nav-item active" *ngIf="cs.usuario.uid">
+          <a class="nav-link" (click)="cs.logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
+<div class="container pt-5 pb-4">
   <app-login *ngIf="!cs.usuario.uid"></app-login>
-  <div class="chat-window" *ngIf="cs.usuario.uid">
+  <div class="chat-window mx-auto" *ngIf="cs.usuario.uid">
     <app-chat></app-chat>
   </div>
 </div>
-<!--
-<router-outlet></router-outlet>
--->
