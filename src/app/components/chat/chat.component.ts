@@ -11,7 +11,7 @@ export class ChatComponent implements OnInit {
   mensaje: string = "";
   elemento: any;
 
-  constructor(private cs: ChatService) { 
+  constructor(public cs: ChatService) { 
     this.cs.cargarMensajes()
       .subscribe(() => {
         setTimeout(() => {
